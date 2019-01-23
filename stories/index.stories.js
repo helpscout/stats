@@ -8,7 +8,6 @@ import {Button, Welcome} from '@storybook/react/demo'
 import Stats from './Stats'
 
 var stats = new Stats()
-// stats.showPanel(); // 0: fps, 1: ms, 2: mb, 3+: custom
 
 function animate() {
   stats.begin()

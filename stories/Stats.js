@@ -1,28 +1,29 @@
-const MODES = {
-  fps: 0,
-  ms: 1,
-  mb: 2,
-}
-
-function getMode(mode = 'fps') {
-  return MODES[mode]
-}
-
 const defaultOptions = {
-  mode: 'fps',
-  margin: 2,
   top: 0,
-  left: 0,
-  opacity: 0.9,
+  left: 'initial',
+  right: 0,
+  bottom: 'initial',
+  opacity: 0.5,
   zIndex: 99999999,
 }
 
 function Stats(options = defaultOptions) {
-  const {opacity, top, left, zIndex} = {...defaultOptions, ...options}
-  let mode = getMode(options.mode)
+  const {bottom, right, opacity, top, left, zIndex} = {
+    ...defaultOptions,
+    ...options,
+  }
 
   const container = document.createElement('div')
-  container.style.cssText = `position:fixed;top:${top};left:${left};opacity:${opacity};z-index:${zIndex}`
+  container.style.cssText = `
+    position:fixed;
+    top:${top};
+    left:${left};
+    bottom:${bottom};
+    right:${right};
+    opacity:${opacity};
+    z-index:${zIndex};
+    pointer-events: none;
+  `
 
   function addPanel(panel) {
     container.appendChild(panel.dom)
@@ -39,32 +40,20 @@ function Stats(options = defaultOptions) {
 
   let beginTime = (performance || Date).now(),
     prevTime = beginTime,
-    frames = 0
+    frames = 0,
+    nodes = 0,
+    maxNodes = 0
 
-  const fpsPanel = addPanel(
-    new Stats.Panel(
-      'FPS',
-      '#0ff',
-      '#002',
-      'Frames rendered in the last second. The higher the number the better.',
-    ),
-  )
+  const fpsPanel = addPanel(new Stats.Panel('FPS', '#0f0', '#020'))
   let memPanel
 
   if (window.performance && window.performance.memory) {
-    memPanel = addPanel(
-      new Stats.Panel('MB', '#f08', '#201', 'MBytes of allocated memory.'),
-    )
+    memPanel = addPanel(new Stats.Panel('MB', '#0ff', '#002'))
   }
 
-  const msPanel = addPanel(
-    new Stats.Panel(
-      'MS',
-      '#0f0',
-      '#020',
-      'Milliseconds needed to render a frame. The lower the number the better.',
-    ),
-  )
+  const nodesPanel = addPanel(new Stats.Panel('NODES', '#f08', '#201'))
+
+  // const msPanel = addPanel(new Stats.Panel('MS', '#0f0', '#020'))
 
   mount()
 
@@ -76,6 +65,11 @@ function Stats(options = defaultOptions) {
 
     begin: function() {
       beginTime = (performance || Date).now()
+      nodes = document.querySelectorAll('*').length
+
+      if (nodes > maxNodes) {
+        maxNodes = nodes
+      }
     },
 
     end: function() {
@@ -83,7 +77,7 @@ function Stats(options = defaultOptions) {
 
       let time = (performance || Date).now()
 
-      msPanel.update(time - beginTime, 200)
+      // msPanel.update(time - beginTime, 200)
 
       if (time >= prevTime + 1000) {
         fpsPanel.update((frames * 1000) / (time - prevTime), 100)
@@ -98,6 +92,8 @@ function Stats(options = defaultOptions) {
             memory.jsHeapSizeLimit / 1048576,
           )
         }
+
+        nodesPanel.update(nodes, maxNodes * 2)
       }
 
       return time
@@ -109,7 +105,7 @@ function Stats(options = defaultOptions) {
   }
 }
 
-Stats.Panel = function(name, fg, bg, title = '') {
+Stats.Panel = function(name, fg, bg) {
   let min = Infinity,
     max = 0,
     round = Math.round
@@ -125,7 +121,6 @@ Stats.Panel = function(name, fg, bg, title = '') {
     GRAPH_HEIGHT = 30 * PR
 
   const canvas = document.createElement('canvas')
-  canvas.setAttribute('title', title)
   canvas.width = WIDTH
   canvas.height = HEIGHT
   canvas.style.cssText = 'width:80px;height:48px'
