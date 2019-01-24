@@ -1,0 +1,6 @@
+src/typings/**/*
+stories
+docs
+dist
+coverage
+other

@@ -7,6 +7,33 @@ const defaultOptions = {
   zIndex: 99999999,
 }
 
+function getTotalNodeCountFromDocument(document = window.document) {
+  return document.getElementsByTagName('*').length
+}
+
+function getTotalNodeCountFromFrames() {
+  let i = 0;
+  let total = 0;
+  const frameNodes = window.document.getElementsByTagName('iframe')
+  const frames = Array.from(frameNodes)
+
+  while (i < frames.length) {
+    if (frames[i].contentDocument) {
+      total = total + getTotalNodeCountFromDocument(frames[i].contentDocument)
+    }
+    i++;
+  }
+
+  return total
+}
+
+function getTotalNodeCount() {
+  const rootCount = getTotalNodeCountFromDocument(window.document)
+  const frameCount = getTotalNodeCountFromFrames()
+
+  return rootCount + frameCount
+}
+
 function Stats(options = defaultOptions) {
   const {bottom, right, opacity, top, left, zIndex} = {
     ...defaultOptions,
@@ -65,7 +92,7 @@ function Stats(options = defaultOptions) {
 
     begin: function() {
       beginTime = (performance || Date).now()
-      nodes = document.querySelectorAll('*').length
+      nodes = getTotalNodeCount()
 
       if (nodes > maxNodes) {
         maxNodes = nodes
