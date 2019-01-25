@@ -2,15 +2,6 @@
 
 > Easy performance monitoring for JavaScript / React
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [✨ Features](#-features)
-- [🔧 Installation](#-installation)
-- [❤️ Thanks](#-thanks)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Installation
 
 Add `stats` to your project via `npm install`:
