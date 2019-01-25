@@ -27,7 +27,6 @@
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
     "release": "np --no-yarn",
     "version": "npm run build",
-    "postversion": "npm publish",
     "start": "npm run storybook",
     "storybook": "start-storybook -p 5005",
     "build-storybook": "build-storybook",
