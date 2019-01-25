@@ -23,7 +23,7 @@
     "dev": "zero test --watchAll",
     "test": "npm run build",
     "format": "zero format",
-    "precommit": "zero lint",
+    "precommit": "zero pre-commit",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
     "release": "np --no-yarn",
     "version": "npm run build",

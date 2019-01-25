@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [📊 Stats](#-stats)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [JavaScript](#javascript)
+    - [React](#react)
+  - [Graphs](#graphs)
+  - [Options](#options)
+  - [Thanks](#thanks)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 📊 Stats
 
 [![Build Status](https://travis-ci.org/helpscout/stats.svg?branch=master)](https://travis-ci.org/helpscout/stats)
@@ -37,15 +51,17 @@ Stats comes with a handy `<StatsGraph />` component. To add it to your React pro
 
 ```jsx
 import React from 'react'
-import { StatsGraph } from '@helpscout/stats'
+import {StatsGraph} from '@helpscout/stats'
 
 class App extends React.Component {
   render() {
-    ;<div>
-      ...
-      <StatsGraph />
-      ...
-    </div>
+    return (
+      <div>
+        ...
+        <StatsGraph />
+        ...
+      </div>
+    )
   }
 }
 
@@ -53,6 +69,12 @@ export default App
 ```
 
 `StatsGraph` cleans up after itself if it unmounts.
+
+## Graphs
+
+- **FPS** Frames rendered in the last second. The higher the number the better.
+- **MB** MBytes of allocated memory. (Run Chrome with --enable-precise-memory-info)
+- **NODES** Number of DOM nodes in `window.document` (including iFrame nodes).
 
 ## Options
 
