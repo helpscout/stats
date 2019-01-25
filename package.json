@@ -1,6 +1,6 @@
 {
   "name": "@helpscout/stats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Easy performance monitoring for JavaScript / React",
   "main": "dist/index.js",
   "private": false,
