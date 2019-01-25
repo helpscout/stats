@@ -1,6 +1,7 @@
 # 📊 Stats
 
 [![Build Status](https://travis-ci.org/helpscout/stats.svg?branch=master)](https://travis-ci.org/helpscout/stats)
+[![npm version](https://badge.fury.io/js/%40helpscout%2Fstats.svg)](https://badge.fury.io/js/%40helpscout%2Fstats)
 
 > Easy performance monitoring for JavaScript / React
 
