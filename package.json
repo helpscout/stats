@@ -35,6 +35,13 @@
   },
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helpscout/stats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helpscout/stats/issues"
+  },
   "keywords": [
     "stats",
     "performance",
