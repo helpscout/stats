@@ -1,4 +1,4 @@
-# Stats
+# 📊 Stats
 
 > Easy performance monitoring for JavaScript / React
 
