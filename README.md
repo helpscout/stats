@@ -2,6 +2,8 @@
 
 > Easy performance monitoring for JavaScript / React
 
+![Stats](https://raw.githubusercontent.com/helpscout/stats/master/images/stats-demo.gif)
+
 ## Installation
 
 Add `stats` to your project via `npm install`:
