@@ -36,6 +36,12 @@
   },
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "license": "MIT",
+  "keywords": [
+    "stats",
+    "performance",
+    "fps",
+    "react"
+  ],
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@helpscout/zero": "^1.0.3",
