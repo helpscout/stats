@@ -4,8 +4,11 @@ export const defaultOptions = {
   right: 0,
   bottom: 'initial',
   opacity: 0.5,
+  position: 'fixed',
   zIndex: 99999999,
 }
+
+export const toPx = value => (typeof value === 'number' ? `${value}px` : value)
 
 export function getTotalNodeCountFromDocument(
   doc: Document | null = window.document

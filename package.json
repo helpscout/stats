@@ -1,28 +1,35 @@
 {
+  "name": "@helpscout/stats",
+  "version": "0.0.0",
+  "description": "Easy performance monitoring for JavaScript / React",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "add-contributor": "zero contributors add",
-    "prestart": "npm run check:npm",
+    "prestart": "zero prestart",
     "build:ts": "tsc",
-    "build:postclean": "rm -rf dist/__tests__ && rm -rf dist/__fixtures__",
+    "build:postclean": "rm -rf dist/__tests__",
     "build": "npm run clean && npm run build:ts && npm run build:postclean",
-    "bundle": "zero build --bundle",
     "clean": "rm -rf dist",
     "lint": "zero lint",
     "dev": "zero test --watchAll",
     "test": "zero test --coverage",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "validate": "zero validate",
-    "setup": "npm install && npm run validate -s",
     "format": "zero format",
     "precommit": "zero lint",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
-    "release": "np --no-yarn --no-publish",
+    "release": "np --no-yarn",
     "version": "npm run build",
     "postversion": "npm publish",
     "start": "npm run storybook",
     "storybook": "start-storybook -p 5005",
     "build-storybook": "build-storybook",
-    "prettier": "prettier \"src/**/*.js\" --write",
+    "prettier": "prettier \"src/**/*.{js,ts,tsx}\" --write",
     "pretty": "npm run prettier"
   },
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
@@ -37,11 +44,9 @@
     "@types/react": "16.7.18",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
-    "lerna": "^3.10.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
-  },
-  "dependencies": {}
+  }
 }

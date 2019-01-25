@@ -1,28 +1,17 @@
 import React from 'react'
 
-import {storiesOf} from '@storybook/react'
-import {action} from '@storybook/addon-actions'
-import {linkTo} from '@storybook/addon-links'
+import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
 
-import {Button, Welcome} from '@storybook/react/demo'
-import Stats from './Stats'
-
-var stats = new Stats()
-
-function animate() {
-  stats.begin()
-
-  // monitored code goes here
-
-  stats.end()
-
-  requestAnimationFrame(animate)
-}
-
-requestAnimationFrame(animate)
+import { Button, Welcome } from '@storybook/react/demo'
+import StatsGraph from '../src/StatsGraph'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
-  <Welcome showApp={linkTo('Button')} />
+  <div>
+    <StatsGraph />
+    <Welcome showApp={linkTo('Button')} />
+  </div>
 ))
 
 storiesOf('Button', module)

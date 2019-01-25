@@ -1,23 +1,29 @@
-import { defaultOptions, getTotalNodeCount } from './utils'
+import { defaultOptions, getTotalNodeCount, toPx } from './utils'
 import Panel from './Panel'
 
 function Stats(options = defaultOptions) {
-  const { bottom, right, opacity, top, left, zIndex } = {
+  const { bottom, right, opacity, position, top, left, zIndex } = {
     ...defaultOptions,
     ...options,
   }
 
   const container = document.createElement('div')
   container.style.cssText = `
-    position:fixed;
-    top:${top};
-    left:${left};
-    bottom:${bottom};
-    right:${right};
+    position:${position};
+    top:${toPx(top)};
+    left:${toPx(left)};
+    bottom:${toPx(bottom)};
+    right:${toPx(right)};
     opacity:${opacity};
     z-index:${zIndex};
     pointer-events: none;
   `
+
+  let beginTime = (performance || Date).now()
+  let prevTime = beginTime
+  let frames = 0
+  let nodes = 0
+  let maxNodes = 0
 
   function addPanel(panel) {
     container.appendChild(panel.dom)
@@ -32,13 +38,12 @@ function Stats(options = defaultOptions) {
     if (container.parentNode) {
       container.parentNode.removeChild(container)
     }
-  }
-
-  let beginTime = (performance || Date).now(),
-    prevTime = beginTime,
-    frames = 0,
-    nodes = 0,
+    beginTime = (performance || Date).now()
+    prevTime = beginTime
+    frames = 0
+    nodes = 0
     maxNodes = 0
+  }
 
   // @ts-ignore
   const fpsPanel = addPanel(new Panel('FPS', '#0f0', '#020'))
