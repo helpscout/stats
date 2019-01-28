@@ -16,7 +16,6 @@
     "noUnusedLocals": false,
     "outDir": "dist",
     "rootDirs": ["src", "stories"],
-    "sourceMap": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
