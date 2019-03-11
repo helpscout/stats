@@ -1,4 +1,3 @@
-const { defaults: tsjPreset } = require('ts-jest/presets')
 const jestConfig = require('@helpscout/zero/jest')
 
 const coverageList = [
@@ -13,8 +12,4 @@ module.exports = Object.assign({}, jestConfig, {
   // setupTestFrameworkScriptFile: '<rootDir>/scripts/setupTests.js',
   testEnvironment: 'jsdom',
   testURL: 'http://localhost',
-  transform: {
-    '^.+\\.js$': 'babel-jest',
-    ...tsjPreset.transform,
-  },
 })
