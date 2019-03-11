@@ -15,9 +15,8 @@
   "scripts": {
     "add-contributor": "zero contributors add",
     "prestart": "zero prestart",
-    "build:ts": "tsc",
-    "build:postclean": "rm -rf dist/__tests__",
-    "build": "npm run clean && npm run build:ts && npm run build:postclean",
+    "postbuild": "rm -rf dist/__tests__",
+    "build": "zero build",
     "clean": "rm -rf dist",
     "lint": "zero lint",
     "dev": "zero test --watchAll",
@@ -25,13 +24,12 @@
     "format": "zero format",
     "precommit": "zero pre-commit",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
-    "release": "np --no-yarn",
+    "release": "zero release",
     "version": "npm run build",
     "start": "npm run storybook",
     "storybook": "start-storybook -p 5005",
     "build-storybook": "build-storybook",
-    "prettier": "prettier \"src/**/*.{js,ts,tsx}\" --write",
-    "pretty": "npm run prettier"
+    "pretty": "zero format"
   },
   "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
   "license": "MIT",
@@ -49,20 +47,15 @@
     "react"
   ],
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@helpscout/zero": "^1.0.3",
-    "@storybook/addon-actions": "^4.1.9",
-    "@storybook/addon-links": "^4.1.9",
-    "@storybook/addons": "^4.1.9",
-    "@storybook/react": "^4.1.9",
-    "@types/react": "16.7.18",
-    "awesome-typescript-loader": "^5.2.1",
+    "@helpscout/zero": "3.0.2",
+    "@storybook/addon-actions": "4.1.12",
+    "@storybook/addon-links": "4.1.12",
+    "@storybook/addons": "4.1.12",
+    "@storybook/react": "4.1.12",
+    "@types/react": "16.8.7",
     "babel-loader": "^8.0.5",
-    "np": "^4.0.2",
-    "prettier": "^1.16.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
+    "typescript": "3.3.3333"
   }
 }
